@@ -13,9 +13,22 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.get('/', (req, res) => {
-	res.render('index')
+	res.render('index', {
+		title: 'HackerU NodeJs'
+	})
+})
+app.get('/about', (req, res) => {
+	res.render('about', {
+		title: 'About'
+	})
 })
 
+app.use((req, res) => {
+	res.status(404);
+	res.render('404');
+});
+
+// database
 database().then(info => {
     	console.log(`Connected to ${info.host}:${info.port}/${info.name}`)
 	app.listen(process.env.PORT || `${process.env.PORT}`, () => {
