@@ -23,9 +23,15 @@ app.get('/about', (req, res) => {
 	})
 })
 
+app.get('/contact', (req, res) => {
+	res.render('contact', {
+		title: 'Contact'
+	})
+})
+
 app.use((req, res) => {
 	res.status(404);
-	res.render('404');
+	res.render('404', {title: 'Page Not Found!'});
 });
 
 // database
